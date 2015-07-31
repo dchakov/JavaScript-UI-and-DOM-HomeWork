@@ -23,7 +23,9 @@ function solve() {
             throw Error('The provided ID is not a **jQuery object** or a `string`');
         };
 
-        var elementButton = $(selector).children('.button').text('hide'),
+        var elementButton = $(selector)
+            .children('.button')
+            .text('hide'),
             len, i;
 
         for (i = 0, len = elementButton.length; i < len; i += 1) {

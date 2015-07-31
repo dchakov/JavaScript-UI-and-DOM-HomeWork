@@ -27,7 +27,7 @@ function solve() {
         if (count < 1) {
             throw Error('Number, but is less than 1');
         }
-        if (!$(selector)) {
+        if (typeof selector !== 'string' || !$(selector)) {
             throw Error('the provided selector does not selects anything');
         }
         var $ul = $('<ul>').addClass('items-list');
