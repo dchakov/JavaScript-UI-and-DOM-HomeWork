@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KineticJS</title>
+    <style>
+    canvas {
+        border: 1px solid black !important;
+    }
+    </style>
+    <script src="bower_components/kineticjs/kinetic.js"></script>
+</head>
+
+<body>
+    <div id="kinetic-container"></div>
+    <script type="text/javascript">
+    //window.onload = function() {
+
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: 500,
+        height: 350
+    });
+
+    var layer = new Kinetic.Layer();
+    var bgLayer = new Kinetic.Layer();
+
+    var points = [],
+        delta = 50;
+
+    for (var i = 0; i <= stage.getWidth(); i += 50) {
+        //x
+        points.push(i);
+        //y
+        points.push(150 + delta);
+        delta *= -1;
+    }
+    console.log(points);
+
+    bgLayer.add(new Kinetic.Line({
+        points: points,
+        fill: 'green',
+        stroke: 'green',
+        closed: true
+    }));
+
+    var rect = new Kinetic.Rect({
+        x: 150,
+        y: 150,
+        width: 200,
+        height: 150,
+        fill: 'pink'
+    });
+
+    function animFrame() {
+        rect.setX(rect.getX() + 5);
+        layer.draw();
+        requestAnimationFrame(animFrame);
+    }
+
+    layer.add(rect);
+    stage.add(bgLayer);
+    stage.add(layer);
+
+
+    animFrame();
+    </script>
+</body>
+
+</html>

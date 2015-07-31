@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML5 canvas</title>
+    <style>
+    canvas {
+        background-color: yellowgreen;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="the-canvas" width="500" height="350"></canvas>
+    <script>
+    var canvas = document.getElementById('the-canvas'),
+        ctx = canvas.getContext('2d');
+
+    var img = new Image();
+    img.onload = function() {
+        var scaleIndex = img.width / 100;
+        ctx.drawImage(img, 0, 0,
+            img.width / scaleIndex, img.height / scaleIndex);
+
+        var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height),
+            data = imageData.data;
+
+        for (var i = 0; i < data.length; i += 4) {
+            var color = {
+                red: data[i],
+                green: data[i + 1],
+                blue: data[i + 2],
+                alpha: data[i + 3]
+            };
+            if (color.red > 127 &&
+                color.green >127 &&
+                color.blue > 127) {
+                data[i + 3] = 0;
+            }
+        }
+        ctx.putImageData(imageData, 0, 0);
+    }
+    img.src = "batman.jpg";
+    </script>
+</body>
+
+</html>

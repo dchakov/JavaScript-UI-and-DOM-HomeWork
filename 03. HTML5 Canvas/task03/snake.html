@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Snake Game</title>
+    <style type="text/css">
+    canvas {
+        border: 1px solid black !important;
+        float: left;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="snake" width="500" height="300"></canvas>
+    <script src="snake.js"></script>
+    <div>
+        <ul>
+            <li>SNAKE</li>
+            <li>Controls</li>
+            <li>&larr;&uarr;&rarr;&darr;</li>
+        </ul>
+        
+    </div>
+    <button onclick="startMove()">Start</button>
+    <button onclick="stopMove()">Stop</button>
+    <div>
+    <p>High-score board</p>
+        <ul id='scoreBoard'></ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML5 canvas</title>
+    <style>
+    canvas {
+        background-color: yellowgreen;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="the-canvas" width="500" height="350"></canvas>
+    <script>
+    var canvas = document.getElementById('the-canvas'),
+        ctx = canvas.getContext('2d');
+
+    function quadraticCurve(ctx, s1, s2, c) {
+        ctx.beginPath();
+        ctx.moveTo(s1.x, s1.y);
+        ctx.quadraticCurveTo(c.x, c.y, s2.x, s2.y);
+        ctx.stroke();
+    }
+    var s1 = {
+        x: 10,
+        y: 10
+    };
+    var s2 = {
+        x: 450,
+        y: 10
+    };
+
+    for (var i = 0; i < 10; i += 1) {
+        var c = {
+            x: i * 10,
+            y: 200
+        };
+        quadraticCurve(ctx, s1, s2, c);
+    }
+    </script>
+</body>
+
+</html>

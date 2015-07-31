@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <div id="container">
+        <button id="btn">Click Me</button>
+    </div>
+    <script type="text/javascript">
+    var container = document.getElementById('container');
+    var button = document.getElementById('btn');
+
+    button.addEventListener('click', function(ev) {
+        console.log('event on btn');
+    }, false);
+
+    container.addEventListener('click', function(ev) {
+        console.log('event on container');
+    }, false);
+    
+    </script>
+</body>
+
+</html>

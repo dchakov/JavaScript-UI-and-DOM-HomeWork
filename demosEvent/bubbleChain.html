@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>JS DOM & UI</title>
+        <style>
+            .box {
+                width: 250px;
+                height: 250px;
+                border: 1px solid purple;
+                border-radius: 5px
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div>
+            <ul>
+                <li>Click</li>
+            </ul>
+        </div>
+        <script>
+            function handler(){
+        		console.log(this.nodeName);
+        	}
+        	
+        	var node = document.body.firstElementChild;
+        	while(node){
+        		node.addEventListener('click',handler,true);
+                node = node.firstElementChild;
+        	}
+        </script>
+    </body>
+
+</html>

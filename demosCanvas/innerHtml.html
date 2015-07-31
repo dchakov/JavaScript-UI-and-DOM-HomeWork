@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<ul id="ulName">
+	<li id="petioID">Pesho</li>
+	<li id="goshoID">Gosho</li>
+	<li>Petko</li>
+	<li>Tesko</li>
+</ul>
+<div>
+<input type="text" id="in-put">
+	<button onclick="getName()">Add html</button>
+</div>
+<script>
+	var input = document.getElementById('in-put');
+	function getName () {
+		var value = input.value;
+		document.getElementById('petioID').innerHTML = value;
+	}
+var gosho = document.getElementById('goshoID');
+console.log(gosho.innerHTML);
+console.log(gosho.outerHTML);
+console.log(gosho.innerText);
+
+var liCollection = document.querySelectorAll('#ulName li');
+console.log(liCollection);
+	
+</script>
+</body>
+</html>

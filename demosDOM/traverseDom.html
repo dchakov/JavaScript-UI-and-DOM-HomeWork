@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <ul id='the-ul'>
+        <li>Text1</li>
+        <li>Text2</li>
+        <li>Text3</li>
+        <li>Text4</li>
+        <li>Text5</li>
+    </ul>
+    <script>
+    function traverseNode(node, indent) {
+        indent = indent || '';
+        if (node.nodeType !== 1) {
+            return;
+        }
+        console.log(indent + '<' + node.nodeName.toLowerCase() + '>');
+        var child = node.firstChild;
+        while (child) {
+            traverseNode(child,indent+'  ');
+            child = child.nextSibling;
+        }
+        console.log(indent + '</' + node.nodeName.toLowerCase() + '>');
+    }
+
+    traverseNode(document.documentElement);
+    </script>
+</body>
+
+</html>

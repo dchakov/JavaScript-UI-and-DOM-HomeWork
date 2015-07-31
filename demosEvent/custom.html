@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>JS DOM & UI</title>
+        <style>
+            .box {
+                width: 250px;
+                height: 250px;
+                border: 1px solid purple;
+                border-radius: 5px
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div>
+            <ul id="list">
+                <li>Item #1</li>
+                <li>Item #2</li>
+                <li>Item #3</li>
+                <li>Item #4</li>
+                <li>Item #5</li>
+                <li>Item #6</li>
+                <li>Item #7</li>
+                <li>Item #8</li>
+                <li>Item #9</li>
+                <li>Item #10</li>
+                <li>Item #11</li>
+                <li>Item #12</li>
+                <li>Item #13</li>
+                <li>Item #14</li>
+                <li>Item #15</li>
+            </ul>
+        </div>
+        <script>
+            var list = document.getElementById('list');
+            var node = list.firstElementChild;
+        
+            var onItemClick = function(ev){
+                var item = ev.target;
+                console.log(item.innerHTML);
+            };
+            list.addEventListener('click',onItemClick);    
+                
+            // while (node) {
+            //     node.addEventListener('click', onItemClick);
+            //     node= node.nextElementSibling;
+            // }
+        </script>
+    </body>
+
+</html>

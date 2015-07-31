@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS Live node</title>
+</head>
+
+<body>
+    <ul>
+        <li>Gosho</li>
+        <li>Pesho</li>
+        <li>Ivan</li>
+        <li>Tanko</li>
+        <li>Joro</li>
+    </ul>
+    <script type="text/javascript">
+    var lilive = document.getElementsByTagName('li');
+    var listatic = document.querySelectorAll('li');
+
+    console.log(lilive);
+    console.log(listatic);
+
+    var ul = document.getElementsByTagName('ul')[0];
+    ul.innerHTML += '<li>Nako</li>';
+
+    console.log(lilive);
+    console.log(listatic);
+    </script>
+</body>
+
+</html>

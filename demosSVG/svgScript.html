@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SVG script</title>
+    <style type="text/css">
+    svg {
+        border: 2px solid black;
+    }
+    
+    rect {
+        fill: yellow;
+        stroke: green;
+        stroke-width: 5px;
+    }
+    </style>
+</head>
+
+<body>
+    <svg width='500' height='300' id='the-svg'>
+        <rect id='special-rect' x='150' y='150' width='75' height='225' />
+        <path id="special-path" d='M 50 50 L 100 100 L 100 50 z' />
+    </svg>
+    <script type="text/javascript">
+    var svg = document.getElementById('the-svg');
+    var svgNS = 'http://www.w3.org/2000/svg';
+    var rect = document.createElementNS(svgNS, 'rect');
+    rect.setAttribute('x', 50);
+    rect.setAttribute('y', 150);
+    rect.setAttribute('width', 75);
+    rect.setAttribute('height', 225);
+    svg.appendChild(rect);
+
+    var rect1 = document.querySelector('#special-rect');
+    //console.log(rect1);
+
+    setTimeout(function() {
+        rect1.setAttribute('x', 250);
+    }, 1000)
+
+    var path = document.getElementById("special-path");
+    setTimeout(function() {
+        path.setAttribute('fill', 'yellowgreen');
+        path.setAttribute('d', 'M 60 60 L 150 150 L 150 50 z');
+    }, 1000)
+
+    var circle = document.createElementNS(svgNS, 'circle');
+    circle.setAttribute('cx', 10);
+    circle.setAttribute('cy', 10);
+    circle.setAttribute('r', 10);
+    svg.appendChild(circle);
+
+    var delta = 1;
+
+    function animFrame() {
+        var cx = +circle.getAttribute('cx');
+        if (cx < 0 || cx > +svg.getAttribute('width')) {
+            delta *= -1;
+        }
+        circle.setAttribute('cx', cx + delta * 5);
+        requestAnimationFrame(animFrame);
+    }
+
+    animFrame();
+    </script>
+</body>
+
+</html>

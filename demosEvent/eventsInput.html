@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <input id="inputText" type="text">
+    <span id="textSpan">Some text</span>
+    <script type="text/javascript">
+    var someInput = document.getElementById("inputText");
+    var span = document.getElementById('textSpan');
+
+    someInput.addEventListener('keyup', input, false);
+    span.addEventListener("click", input, false);
+
+
+    function input(ev) {
+    	console.log(ev.keyCode);
+        console.log(ev.target);
+        var input = document.getElementById("inputText");
+        var span = document.getElementById("textSpan");
+        span.innerHTML = input.value;
+    }
+    </script>
+</body>
+
+</html>

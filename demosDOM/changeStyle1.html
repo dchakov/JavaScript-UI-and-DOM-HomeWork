@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS DOM UI</title>
+    <style type="text/css">
+    h1{
+    	border:5px solid orange;
+    }
+    </style>
+</head>
+
+<body>
+    <a href="#">Show</a>
+    <h1  type="text/javascript">Text</h1>
+    <script>
+    var btn = document.querySelector('a'),
+        heading = document.querySelector('h1');
+    btn.addEventListener('click', function() {
+        var height = heading.style.height || 100;
+        height = parseInt(height);
+        heading.style.height = 2*height+'px';
+    });
+    </script>
+</body>
+
+</html>

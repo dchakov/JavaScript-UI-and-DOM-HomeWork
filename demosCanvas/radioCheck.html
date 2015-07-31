@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS DOM UI</title>
+</head>
+
+<body>
+    <input type="radio" name="radios[]" value="value 1">
+    <input type="radio" name="radios[]" value="value 2">
+    <input type="radio" name="radios[]" value="value 3">
+    <input type="radio" name="radios[]" value="value 4">
+    <input type="radio" name="radios[]" value="value 5">
+    <button onclick="check()">Check</button>
+    <ul>
+        <li></li>
+        <li></li>
+        <li>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+    function check() {
+        var radios = document.getElementsByName('radios[]');
+        var i, len;
+        for (i = 0, len = radios.length; i < len; i += 1) {
+            if (radios[i].checked) {
+                alert(radios[i].value);
+            }
+        }
+    }
+    //var list = document.querySelectorAll('ul ul');
+
+    var lists = document.getElementsByTagName('ul');
+    for (var i = 0; i < lists.length; i += 1) {
+        var nestedLists = lists[i].getElementsByTagName('ul');
+        if (nestedLists.length) {
+            alert(nestedLists[0].innerHTML);
+        }
+    }
+    </script>
+</body>
+
+</html>

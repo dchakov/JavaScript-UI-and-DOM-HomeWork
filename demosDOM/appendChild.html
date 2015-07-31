@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS DOM UI</title>
+    <style type="text/css">
+    h1 {
+        border: 5px solid orange;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <ul id="list"></ul>
+    <script>
+    var i, count = 15,
+        list = document.getElementById('list');
+
+    var itemTemplate = document.createElement('li');
+    itemTemplate.className = 'list-item';
+    var linkTemplate = document.createElement('a');
+    linkTemplate.href = '#';
+    itemTemplate.appendChild(linkTemplate);
+
+    for (i = 0; i < count; i += 1) {
+        linkTemplate.innerHTML = 'Link# ' + i;
+        list.appendChild(itemTemplate.cloneNode(true));
+    };
+    </script>
+</body>
+
+</html>

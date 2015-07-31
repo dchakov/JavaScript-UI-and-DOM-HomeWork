@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS DOM UI</title>
+    <style type="text/css">
+    h1{
+    	border:5px solid orange;
+    }
+    </style>
+</head>
+
+<body>
+    <a href="#">Show</a>
+    <h1  type="text/javascript">Text</h1>
+    <script>
+    var btn = document.querySelector('a'),
+        heading = document.querySelector('h1');
+    btn.addEventListener('click', function() {
+        if(btn.innerHTML === 'Show'){
+            btn.innerHTML = 'Hide';
+        } else {
+            btn.innerHTML = 'Show';
+        }
+        if (heading.style.display === 'none') {
+            heading.style.display = '';
+        } else {
+            heading.style.display = 'none';
+        }
+        // if (heading.style.border) {
+        //     heading.style.border = '';
+        // } else {
+        //     heading.style.border = '1px solid black';
+        // }
+    });
+    </script>
+</body>
+
+</html>

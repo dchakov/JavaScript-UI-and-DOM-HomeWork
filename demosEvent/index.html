@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS DOM & UI</title>
+    <style>
+    .box {
+        width: 250px;
+        height: 250px;
+        border: 1px solid purple;
+        border-radius: 5px
+    }
+    </style>
+</head>
+
+<body>
+    <div id="board" class="box"></div>
+    <script>
+    var board = document.getElementById('board');
+
+    function onBoardClick(ev) {
+        this.innerHTML += '<strong>' + ev.offsetX + ', ' + ev.offsetY + '</strong><br/>';
+    }
+
+    board.addEventListener('click', onBoardClick);
+
+    board.addEventListener('tap', onBoardClick);
+	
+	window.addEventListener('keydown',function(ev){
+		board.innerHTML += '<strong>' + ev.keyCode + '</strong><br/>';
+	})
+
+    // board.addEventListener('mouseenter',function () {
+    // 	this.style.background = 'pink';
+    // });
+
+    // board.addEventListener('mouseleave',function(){
+    // 	this.style.background = '';
+    // });
+
+    // board.addEventListener('mouseenter',function () {
+    // 	this.style.borderWidth = '5px';
+    // });
+    // board.onmouseenter = function(){
+    // 	this.style.background = 'pink';
+    // }
+    // board.onmouseleave = function(){
+    // 	this.style.background = '';
+    // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML5 canvas</title>
+    <style>
+    canvas {
+        background-color: yellowgreen;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="the-canvas" width="500" height="350"></canvas>
+    <script>
+    var canvas = document.getElementById('the-canvas'),
+        ctx = canvas.getContext('2d');
+
+    function quadraticCurve(ctx, s1, s2, c) {
+        ctx.beginPath();
+        ctx.moveTo(s1.x, s1.y);
+        ctx.quadraticCurveTo(c.x, c.y, s2.x, s2.y);
+        ctx.stroke();
+    }
+
+    function bezierCurve(ctx, s1, s2, c1, c2) {
+        ctx.beginPath();
+        ctx.moveTo(s1.x, s1.y);
+        ctx.quadraticCurveTo(c1.x, c1.y, c2.x, c2.y, s2.x, s2.y);
+        ctx.stroke();
+    }
+    var s1 = {
+        x: 10,
+        y: 340
+    };
+    var s2 = {
+        x: 450,
+        y: 340
+    };
+
+    var i = 0;
+
+    function anim() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var c1 = {
+            x: i * 5,
+            y: 0
+        };
+        var c2 = {
+            x: 0,
+            y: i * 5
+        }
+        i += 1;
+        bezierCurve(ctx, s1, s2, c1, c2);
+        requestAnimationFrame(anim);
+    }
+    anim();
+    </script>
+</body>
+
+</html>

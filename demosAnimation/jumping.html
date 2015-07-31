@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Jumping</title>
+    <script type="text/javascript" src='bower_components/kineticjs/kinetic.js'></script>
+    <style type="text/css">
+    canvas {
+        border: 1px solid black !important;
+    }
+    </style>
+
+    <body>
+        <div id='container'></div>
+        <script type="text/javascript">
+        var stage = new Kinetic.Stage({
+            container: 'container',
+            width: 800,
+            height: 650
+        });
+        var layer = new Kinetic.Layer();
+
+        var bglayer = new Kinetic.Layer();
+        bglayer.add(new Kinetic.Rect({
+			x:0,
+			y:500,
+			width:800,
+			height:150,
+			fill:'green'
+        }));
+
+        var player = new Kinetic.Rect({
+            x: 0,
+            y: 450,
+            width: 30,
+            height: 80,
+            fill: 'pink',
+            stroke: 'purple'
+        });
+
+        layer.add(player);
+        stage.add(layer);
+        stage.add(bglayer);
+
+        var jump = (function() {
+            var jumpingShapes = [];
+
+            function jump(player, finishedCallback) {
+                var x = player.getX(),
+                    y = player.getY(),
+                    originalPosition = {
+                        x: x,
+                        y: y
+                    }
+                CONST = {
+                        JUMP_HEIGHT: 150
+                    },
+                    updatex = 1,
+                    updatey = -5;
+
+                if (jumpingShapes.indexOf(player) >= 0) {
+                    return;
+                }
+                jumpingShapes.push(player);
+
+                function performJump() {
+                    if (originalPosition.y - CONST.JUMP_HEIGHT > player.getY()) {
+                        updatey *= -1;
+                    };
+                    player.setX(player.getX() + updatex);
+                    player.setY(player.getY() + updatey);
+                    layer.draw();
+
+                    if (originalPosition.y > player.getY()) {
+                        requestAnimationFrame(performJump);
+                    } else {
+                        jumpingShapes.splice(jumpingShapes.indexOf(player));
+                        finishedCallback();
+                    }
+
+                }
+                performJump();
+
+                player.setY(y - CONST.JUMP_HEIGHT);
+                layer.draw();
+            }
+            return jump;
+        }());
+
+        function muchJumping() {
+            jump(player,function(){
+            	muchJumping();
+            });
+            //setTimeout(muchJumping, 100);
+        }
+        muchJumping();
+        // window.onkeydown = function(ev) {
+        //     if (ev.keyCode === 32) {
+        //         jump(player);
+        //     }
+        // }
+        </script>
+    </body>
+
+</html>

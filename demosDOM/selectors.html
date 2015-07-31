@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DOM</title>
+	</head>
+	<body>
+		<ul id='the-ul'>
+			<li>
+				<a href="" id='firstLi'>Text1</a>
+			</li>
+			<li>
+				<a href="">Text2</a>
+			</li>
+			<li>
+				<a href="">Text3</a>
+			</li>
+			<li>
+				<a href="">Text4</a>
+			</li>
+			<li>
+				<a href="">Text5</a>
+			</li>
+		</ul>
+		<script type="text/javascript">
+			var ul = document.getElementById('the-ul');
+			console.log(ul.lastElementChild.previousSibling);
+			console.log(ul.lastElementChild.previousElementSibling);
+			var childs = ul.childNodes;
+			console.log(childs);
+			for (var i = 0; i < childs.length; i++) {
+				if(childs[i].nodeType === 1){
+					console.log(childs[i]);
+				}
+			};
+			console.log(ul.getElementsByTagName('li'));
+			var li = document.getElementById('firstLi');
+			li.style.color = 'red';
+
+			var firstChild = ul.firstChild;
+			var firstElementChild = ul.firstElementChild;
+			console.log(firstChild);
+			console.log(firstElementChild);
+			
+		</script>
+	</body>
+
+</html>

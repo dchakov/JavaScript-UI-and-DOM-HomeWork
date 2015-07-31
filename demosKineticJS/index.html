@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KineticJS</title>
+    <style>
+    canvas {
+        border: 1px solid black !important;
+    }
+    </style>
+    <script src="bower_components/kineticjs/kinetic.js"></script>
+</head>
+
+<body>
+    <div id="kinetic-container"></div>
+    <script type="text/javascript">
+    //window.onload = function() {
+
+    var stage = new Kinetic.Stage({
+        container: 'kinetic-container',
+        width: 450,
+        height: 350
+    });
+
+    var layer = new Kinetic.Layer();
+
+
+    var rect = new Kinetic.Rect({
+        x: 100,
+        y: 150,
+        width: 75,
+        height: 225,
+        fill: 'yellowgreen',
+        stroke: 'purple',
+        lineWidth: 5
+    });
+
+    var circle = new Kinetic.Circle({
+        radius: 45,
+        fill: 'purple',
+        stroke: 'blue',
+        strokeWidth: 3,
+        x: 250,
+        y: 250,
+    });
+
+    var shape = new Kinetic.Line({
+        points: [50, 100, 150, 100, 150, 200],
+        stroke: 'purple',
+        fill: 'yellowgreen',
+        closed: true,
+        tension: 1
+    }).rotate(25);
+
+    var shape2 = new Kinetic.Line({
+        points: [50, 100, 150, 100, 150, 200],
+        stroke: 'purple',
+        fill: 'yellowgreen',
+        closed: true,
+        draggable: true
+    });
+
+    layer.add(rect);
+    layer.add(circle);
+    layer.add(shape);
+    layer.add(shape2);
+
+    shape.on('click', function() {
+        this.fill('pink');
+    })
+
+    shape2.on('mouseover', function() {
+        if (this.fill() === 'pink') {
+            this.fill('green');
+        } else {
+            this.fill('pink');
+        }
+        layer.draw();
+    });
+
+
+    document.getElementById('kinetic-container')
+    .addEventListener('mouseover', function() {
+        layer.find('Line')
+            .forEach(function(sh) {
+                if (sh.fill() === 'pink') {
+                    sh.fill('green');
+                } else {
+                    sh.fill('pink');
+                }
+                layer.draw();
+            });
+    });
+
+    stage.add(layer);
+    // };
+    </script>
+</body>
+
+</html>

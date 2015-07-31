@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM</title>
+</head>
+
+<body>
+    <div id="output">
+    <ul>
+        
+    </ul>
+    </div>
+    <ul id='the-ul'>
+        <li>Text1</li>
+        <li>Text2</li>
+        <li>Text3</li>
+        <li>Text4</li>
+        <li>Text5</li>
+    </ul>
+    <script type="text/javascript">
+    var print = (function() {
+        var output = document.getElementById('output');
+
+        function print(msg) {
+            output.innerHTML += '<strong>' + msg + '</strong><br/>';
+        }
+        return print;
+    }());
+
+    var li = document.querySelector('li');
+    print(li instanceof HTMLElement);
+    print(li instanceof HTMLLIElement);
+    print(li instanceof HTMLUListElement);
+
+    var list = document.getElementById('output')
+        .getElementsByTagName('ul')[0];
+    var count = 10;
+
+    for (var i = 0; i < count; i++) {
+        var item = document.createElement('li');
+        item.innerHTML = 'Item# ' + i;
+        list.appendChild(item);
+    }
+
+    var fiftelement = document.querySelector('li:nth-of-type(5)');
+    //print(fiftelement.innerHTML);
+    var newItem = document.createElement('li');
+    newItem.innerHTML = "NEW";
+    list.insertBefore(newItem, fiftelement.nextSibling)
+    </script>
+</body>
+
+</html>

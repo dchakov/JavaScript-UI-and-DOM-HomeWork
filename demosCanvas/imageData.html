@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML5 canvas</title>
+    <style>
+    canvas {
+        background-color: yellowgreen;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="the-canvas" width="500" height="350"></canvas>
+    <script>
+    var canvas = document.getElementById('the-canvas'),
+        ctx = canvas.getContext('2d');
+
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = '5';
+
+    var i = 0,
+        count = 100;
+
+    for (i = 0; i < count; i += 1) {
+        ctx.fillRect(i * 5, i * 3.5, 50, 100);
+        ctx.strokeRect(i * 5, i * 3.5, 50, 100);
+    }
+
+    var imageData = ctx.getImageData(50, 50, 100, 100);
+
+    var data = imageData.data;
+
+    for (var i = 0; i < data.length; i += 4) {
+        var color = {
+            red: imageData.data[i],
+            green: imageData.data[i + 1],
+            blue: imageData.data[i + 2]
+        }
+
+        if (color.red === 0 && color.blue === 0 && color.green === 0) {
+            color = {
+                red: 43,
+                green: 203,
+                blue: 120
+            }
+        } else if (color.red === 255 && color.blue === 255 && color.green === 255) {
+            color = {
+                red: 203,
+                green: 120,
+                blue: 43
+            }
+        }
+        data[i]=color.red;
+        data[i+1]=color.green;
+        data[i+2]=color.blue;
+
+        // imageData.data[i] = 255 - data[i];
+        // imageData.data[i + 1] = 255 - data[i + 1];
+        // imageData.data[i + 2] = 255 - data[i + 2];
+        // //imageData.data[i + 3] = 0;
+    }
+
+    ctx.putImageData(imageData, 50, 50);
+    </script>
+</body>
+
+</html>

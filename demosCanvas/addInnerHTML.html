@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS UI DOM</title>
+</head>
+<body>
+<button onclick="addItem()">Add</button>
+<button onclick="deleteItem()">Delete</button>
+<button onclick="checkCount()">CheckCount</button>
+<script type="text/javascript">
+	var divs = document.getElementsByTagName('div');
+	var index = 1;
+
+	function addItem () {
+		document.body.innerHTML += '<div>'+index+'</div>';
+		index+=1;
+	}
+
+	function deleteItem () {
+		document.body.removeChild(divs[0]);
+	}
+
+	function checkCount () {
+		alert(divs.length);
+	}
+
+</script>
+</body>
+</html>

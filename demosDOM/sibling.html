@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM</title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <ul id='the-ul'>
+        <li>Text1</li>
+        <li>Text2</li>
+        <li>Text3</li>
+        <li>Text4</li>
+        <li>Text5</li>
+    </ul>
+    <script type="text/javascript">
+    var ul = document.getElementById('the-ul');
+    var item = ul.lastChild;
+    var output = document.getElementById('output');
+    while (item) {
+        output.innerHTML += '<li>' + "Node: " + item.innerHTML + "</li>"
+        item = item.previousSibling;
+    }
+    </script>
+</body>
+
+</html>
