@@ -32,7 +32,7 @@ function solve() {
         }
         var $ul = $('<ul>').addClass('items-list');
         for (var i = 0; i < count; i++) {
-          $('<li></li>').addClass('list-item')
+          $('<li>').addClass('list-item')
                 .html('List item #' + i).appendTo($ul);
         }
         $(selector).append($ul);
