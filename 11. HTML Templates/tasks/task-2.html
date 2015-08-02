@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 1</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/x-handlebars-template" id="post-animals"></script>
+    <script src="../bower_components/handlebars/handlebars.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="task-2.js"></script>
+    <script type="text/javascript">
+    var data,
+        postTemplateHTML,
+        postTemplate;
+    data = {
+        animals: [{
+            name: 'Lion',
+            url: 'https://susanmcmovies.files.wordpress.com/2014/12/the-lion-king-wallpaper-the-lion-king-2-simbas-pride-4685023-1024-768.jpg'
+        }, {
+            name: 'Turtle',
+            url: 'http://www.enkivillage.com/s/upload/images/a231e4349b9e3f28c740d802d4565eaf.jpg'
+        }, {
+            name: 'Dog'
+        }, {
+            name: 'Cat',
+            url: 'http://i.imgur.com/Ruuef.jpg'
+        }, {
+            name: 'Dog Again'
+        }]
+    };
+
+    var func = solve();
+    func('#post-animals');
+
+    postTemplateHTML = document.getElementById('post-animals').innerHTML;
+    postTemplate = Handlebars.compile(postTemplateHTML);
+
+    document.getElementById('root').innerHTML = postTemplate(data);
+    </script>
+</body>
+
+</html>

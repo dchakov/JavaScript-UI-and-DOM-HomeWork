@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 1</title>
+</head>
+
+<body>
+    <ul id="books-list" data-template="book-item-template"></ul>
+    <script id="book-item-template" type="text/x-handlebars-template">
+        <li class="book-item">
+            <a href="/#books/{{id}}">
+                <strong>{{title}}</strong>
+            </a>
+        </li>
+    </script>
+    <script src="../bower_components/handlebars/handlebars.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <!-- <script src="task-3.js"></script> -->
+    <script src="task-3-listview"></script>
+    <script type="text/javascript">
+    var books = [{
+        id: 1,
+        title: 'JavaScript: The Good Parts'
+    }, {
+        id: 2,
+        title: 'Secrets of the JavaScript Ninja'
+    }, {
+        id: 3,
+        title: 'Core HTML5 Canvas'
+    }, {
+        id: 4,
+        title: 'JavaScript Patterns'
+    }];
+    $(document).ready(function() {
+        $('#books-list').listview(books);
+    });
+
+
+
+    // var postTemplateHTML = $('#book-item-template').html();
+    // postTemplateHTML =
+    //     '{{#each books}}' +
+    //     postTemplateHTML +
+    //     '{{/each}}';
+    // var postTemplate = Handlebars.compile(postTemplateHTML);
+    // $("#books-list").html(postTemplate({books:books}));
+    </script>
+</body>
+
+</html>
