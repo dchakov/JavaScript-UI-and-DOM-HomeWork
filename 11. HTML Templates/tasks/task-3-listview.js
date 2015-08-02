@@ -6,10 +6,10 @@
             '{{#each data}}' +
             postTemplateHTML +
             '{{/each}}';
-        var postTemplate = handlebars.compile(postTemplateHTML);
+        var postTemplate = Handlebars.compile(postTemplateHTML);
         $this.html(postTemplate({
             data: data
         }));
         return this;
     };
-}(JQuery));
+}(jQuery));
