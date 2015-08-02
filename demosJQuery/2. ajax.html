@@ -1,17 +1,40 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>jQuery AJAX</title>
 </head>
-<body>
-    <div id="root">
-    </div>
-    <script type="text/javascript" src="../jquery-1.11.3.js"></script>
-    <script>
-        $("#root").load('https://restcountries.eu/rest/v1/all');
 
-        // http://www.sitepoint.com/jquery-vs-raw-javascript-3-events-ajax
+<body>
+    <button id="btn">Load repos</button>
+    <div id="repos"></div>
+    <br/>
+    <div id="root"></div>
+    <script type="text/javascript" src="jquery-1.11.3.js"></script>
+    <script>
+    $('#btn').on('click', function() {
+        var $this = $(this);
+        $this.text('Loading....');
+
+        $.get('https://api.github.com/users/dchakov/repos', function(result) {
+            $this.text('Load repos');
+            var ul = $('#repos');
+
+            for (var i = 0; i < result.length; i++) {
+                ul.append('<li>' + result[i].name + '</li>')
+                console.log(result[i].name);
+            }
+        });
+
+        $("#root").load('https://restcountries.eu/rest/v1/all');
+    })
+
+
+
+
+    // http://www.sitepoint.com/jquery-vs-raw-javascript-3-events-ajax
     </script>
 </body>
+
 </html>

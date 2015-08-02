@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task 1</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/x-handlebars-template" id="post-table"></script>
+    <script src="../bower_components/handlebars/handlebars.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="task-1.js"></script>
+    <script type="text/javascript">
+    var data,
+        postTemplateHTML,
+        postTemplate;
+    data = {
+        headers: ['Vendor', 'Model', 'OS'],
+        items: [{
+            col1: 'Nokia',
+            col2: 'Lumia 920',
+            col3: 'Windows Phone'
+        }, {
+            col1: 'LG',
+            col2: 'Nexus 5',
+            col3: 'Android'
+        }, {
+            col1: 'Apple',
+            col2: 'iPhone 6',
+            col3: 'iOS'
+        }]
+    };
+
+    var func = solve();
+    func('#post-table');
+
+    postTemplateHTML = document.getElementById('post-table').innerHTML;
+    postTemplate = Handlebars.compile(postTemplateHTML);
+
+    document.getElementById('root').innerHTML = postTemplate(data);
+    </script>
+</body>
+
+</html>

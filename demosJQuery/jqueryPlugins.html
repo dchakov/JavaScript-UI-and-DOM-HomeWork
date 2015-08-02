@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script type="text/javascript" src="jquery-1.11.3.js"></script>
+</head>
+
+<body>
+    <ul id="my-menu">
+        <li>Pesho</li>
+        <li>Gosho</li>
+        <li>Ivan</li>
+        <li>Niki</li>
+    </ul>
+    <script type="text/javascript">
+    $.fn.beautifulMenu = function(options) {
+
+        options = options || {};
+        // $.extend(options, {
+        //     fontSize: '20px',
+        //     backgroundColor: 'blue'
+        // })
+
+        options.fontSize = options.fontSize || '10px'; 
+        options.backgroundColor = options.backgroundColor || 'gray';
+
+
+        var $this = this;
+        $this.css('list-style-type', 'none');
+        $this.children('li').css({
+            'display': 'inline-block',
+            'padding': options.fontSize,
+            'background-color': options.backgroundColor
+        }).on('click', function() {
+            var eventThis = $(this);
+            alert(eventThis.text());
+        });
+        return $this;
+    };
+
+    $('#my-menu').beautifulMenu({fontSize:'40px'});
+    </script>
+</body>
+
+</html>

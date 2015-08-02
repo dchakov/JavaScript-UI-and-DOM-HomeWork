@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    </style>
+</head>
+
+<body>
+    <ul class="hidden">
+        <li>Ivan</li>
+        <li>Pesho</li>
+        <li>Gosho</li>
+        <li>Asen</li>
+        <li>Zlatan</li>
+    </ul>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+    var li = $('li').hide('slow').show(2000);
+    console.log(li);
+
+    
+    li.css({
+        'color': 'red',
+        'font-size':'20px',
+        'display':'inline-block'
+    })
+
+    li.animate({
+        'font-size':'50px',
+        'opacity':'0.5'
+    },3000)
+
+    $('.hidden').hover(function(){
+        console.log('hovered');
+    },function(){
+        console.log('not hovered');
+    })
+    </script>
+</body>
+
+</html>

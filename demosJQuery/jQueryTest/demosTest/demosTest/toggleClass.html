@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <style type="text/css">
+    .hidden {
+        display: none;
+        
+    }
+    ul li{
+        border: 1px solid black;
+    }
+    </style>
+</head>
+
+<body>
+    <button id="btn">Show</button>
+    <div>
+        <ul id="main" class="hidden">
+            <li>Ivan</li>
+            <li>Pesho</li>
+            <li>Gosho</li>
+            <li>Asen</li>
+            <li>Zlatan</li>
+        </ul>
+    </div>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+    $('#btn').click(function() {
+        var $this = $(this);
+        var $ul = $('#main');
+        $ul.toggleClass('hidden');
+
+        if ($ul.hasClass('hidden')) {
+            $this.text('Show ul');
+        } else {
+            $this.text('Hide ul');
+        }
+    })
+
+    $('ul').on('click', 'li', function() {
+        $(this).css('color', 'red');
+    });
+    </script>
+</body>
+
+</html>
