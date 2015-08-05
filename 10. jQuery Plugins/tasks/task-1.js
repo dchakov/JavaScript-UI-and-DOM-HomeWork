@@ -45,8 +45,6 @@ function solve() {
             $('.current').text($this.text());
             $('#the-select').val($this.attr('data-value'));
         })
-
-        console.log($('body').html());
     };
 }
 

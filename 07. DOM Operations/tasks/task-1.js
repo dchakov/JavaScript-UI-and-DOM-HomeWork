@@ -17,8 +17,7 @@ Create a function that takes an id or DOM element and an array of contents
     * In that case, the content of the element **must not be** changed   
 */
 
-module.exports = function() {
-
+function solve() {
     return function(element, contents) {
         var root,
             div,
@@ -51,3 +50,5 @@ module.exports = function() {
         root.appendChild(container);
     };
 };
+
+module.exports = solve();
